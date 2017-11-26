@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+encoding//src/cn/edu/chenggong/action/CourseAction.java=UTF-8
+encoding//src/cn/edu/chenggong/action/UserAction.java=UTF-8
+encoding//src/cn/edu/chenggong/biz/CourseBiz.java=UTF-8
+encoding//src/cn/edu/chenggong/biz/UsersBiz.java=UTF-8
+encoding//src/cn/edu/chenggong/biz/impl/CourseBizImpl.java=UTF-8
+encoding//src/cn/edu/chenggong/biz/impl/UsersBizImpl.java=UTF-8
+encoding//src/cn/edu/chenggong/dao/CourseMapper.java=UTF-8
+encoding//src/cn/edu/chenggong/dao/UsersMapper.java=UTF-8
+encoding/<project>=UTF-8

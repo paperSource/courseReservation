@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace命名空间，作用就是对sql进行分类化管理，理解sql隔离 
+注意：使用mapper代理方法开发，namespace有特殊重要的作用
+-->
+
+<mapper namespace="cn.edu.chenggong.dao.UsersMapper">
+	 <!-- 添加用户 -->
+    <insert id="addUserInfo" parameterType="Users">
+    	insert into users (usersName, usersPwd, sex, age, tellphoneNum, usersState) VALUES (#{usersName}, #{usersPwd}, #{sex}, #{age}, #{tellphoneNum}, 1);
+    </insert>
+    <insert id="addAdminInfo" parameterType="Users">
+    	insert into users (usersName, usersPwd, sex, age, tellphoneNum, usersState) VALUES (#{usersName}, #{usersPwd}, #{sex}, #{age}, #{tellphoneNum}, 0);
+    </insert>
+    <select id="findUsers" parameterType="Users" resultType="Users">
+        select * from users where usersName=#{usersName} and usersPwd=#{usersPwd}
+    </select>
+    <select id="findUsersInfoById" parameterType="Users" resultType="Users">
+        select * from users where id=#{id}
+    </select>
+    <select id="getTheUsesInfo"  resultType="Users">
+        select * from users 
+    </select>
+    <delete id="delectUsersInfo">
+      delete from Users where id=#{id}
+    </delete>
+    <update id="updateUsersInfo">
+      update Users set usersName=#{usersName},usersPwd=#{usersPwd},sex=#{sex},age=#{age} where id=#{id}
+    </update>
+</mapper>
+
+
