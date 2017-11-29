@@ -3,13 +3,13 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'editUser.jsp' starting page</title>
+    <title>My JSP 'success.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -23,11 +23,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    编辑用户
-    <form action="userInfoAction/saveUser.action" method="post">
-       <input type="hidden" name="id" value="${user.id }">
-       <input type="text" name="name" value="${user.name }"/>
-       <input type="submit" value="保存"/>
-    </form>
+        修改成功请牢记您的密码<br>
+   <a href="login.jsp">点击返回登录页面</a>
+     
+    </script>  
   </body>
 </html>

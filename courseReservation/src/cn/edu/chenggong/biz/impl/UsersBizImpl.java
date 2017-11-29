@@ -22,10 +22,7 @@ public class UsersBizImpl implements UsersBiz {
 	public void setUserMapper(UsersMapper userMapper) {
 		this.userMapper = userMapper;
 	}
-	/**
-	 * 添加用户信息
-	 * @param users
-	 */
+	
 	public void addUserInfo(Users users) {
 		userMapper.addUserInfo(users);
 	}
@@ -54,5 +51,18 @@ public class UsersBizImpl implements UsersBiz {
 
 	public void addAdminInfo(Users users) {
 		userMapper.addAdminInfo(users);	
+	}
+
+	public Users findUsersInfoByUsersName(Users users) {
+		return userMapper.findUsersInfoByUsersName(users);
+	}
+
+	public void insertMailcode(Users users) {
+		userMapper.insertMailcode(users);
+		
+	}
+
+	public void userUpdatePwd(Users users) {
+		userMapper.userUpdatePwd(users);
 	}
 }

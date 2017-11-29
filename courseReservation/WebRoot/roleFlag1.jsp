@@ -91,11 +91,11 @@ inputC.onblur = function checkAge() {
 	}
 }
 inputD.onblur = function checkSex() {
-	if(inputD.value!="男"||inputD.value!="男"){
-	idd.innerHTML="不符合格式要求";
-	inputD.focus();
-	}else{
+	if(inputD.value=="男"||inputD.value=="女"){
 	idd.innerHTML="";
+	}else{
+	idd.innerHTML="不符合格式要求";
+	inputD.focus();	
 	}
 }
 inputE.onblur = function isTelCode() {

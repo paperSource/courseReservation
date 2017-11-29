@@ -23,11 +23,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <body>
    添加页面<br>
    <form action="courseAction/addCourse.action" method="post">
-      courseTitle:<input type="text" name="courseTitle"/><br/>
-      classHour:<input type="text" name="classHour"/><br/>
-      teacherName:<input type="text" name="teacherName"/><br/>
-      classify:<input type="text" name="classify"/><br/>
-      classifyNo:<input type="text" name="classifyNo"/><br/>
+      课程名称courseTitle:<input type="text" name="courseTitle"/><br/>
+      课程时长classHour:<input type="text" name="classHour"/><br/>
+      授课教师teacherName:<input type="text" name="teacherName"/><br/>
+     课程分类 classify:<input type="text" name="classify"/><br/>
+     课程分类编号 classifyNo:<input type="text" name="classifyNo"/><br/>
       <input type="submit" value="添加"/>
    </form>
   </body>

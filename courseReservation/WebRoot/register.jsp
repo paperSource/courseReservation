@@ -23,13 +23,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   <!--这是注册页面-->
   <body>
-    <form action="userAction/addUserInfo.action" method="post">
-      usersname:<input type="text" name="usersName"id="#in1A"/><div id="#in1a"></div>
-      userspwd:<input type="text" name="usersPwd"id="#in1B"/><div id="#in1b"></div>
-      sex:<input type="text" name="sex"id="#in1D"/><div id="#in1d"></div>
-      age:<input type="text" name="age"id="#in1C"/><div id="#in1c"></div>
-      tellphonenum:<input type="text" name="tellphoneNum" id="#in1E"/><div id="#in1e"></div>
-      <input type="submit" value="注册"/>
+    <form action="userAction/addUserInfo.action" method="post" onSubmit="return check();">
+     姓名 usersname:<input type="text" name="usersName"id="#in1A"/><div id="#in1a"></div>
+     密码 userspwd:<input type="text" name="usersPwd"id="#in1B"/><div id="#in1b"></div>
+     性别sex:<input type="text" name="sex"id="#in1D"/><div id="#in1d"></div>
+     年龄age:<input type="text" name="age"id="#in1C"/><div id="#in1c"></div>
+     请输入邮箱：<input type="text" name="emilName" id="inC" ></br><div id="inc"></div>
+     电话tellphonenum:<input type="text" name="tellphoneNum" id="#in1E"/><div id="#in1e"></div>
+      <input type="submit" value="注册" id="#kj"/>
     </form>
   </body>
 
@@ -45,46 +46,73 @@ var inputD = document.getElementById("#in1D");
 var idd = document.getElementById("#in1d");
 var inputE = document.getElementById("#in1E");
 var ide = document.getElementById("#in1e");
+var sub = document.getElementById("#kj");
+inC.onblur = function checkname(){
+var reg=/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/;
+	if(reg.test(inC.value)==false){
+	inc.innerHTML="不符邮箱合格式要求";
+	inC.focus();   
+	}else{
+	inc.innerHTML="";
+	}
+}
+function check(){
+if(inputA.value==""||inputB.value==""||inputC.value==""||inputD.value==""||inputE.value==""){
+ return false;
+}else{
+ return true;
+}
+}
 inputA.onblur = function checknamelength(){
                if(inputA.value.length<3||inputA.value.length>=8) {
                ida.innerHTML="长度必须大于3小于8";
+               sub.style.display="none";
                inputA.focus();
                }
-               else{ida.innerHTML=""}
+               else{ida.innerHTML="";
+               sub.style.display="";}
 }
 inputB.onblur = function checkPwd() {
 	var reg=/^(\w){6,20}$/;
 	if(reg.test(inputB.value)==false){
 	idb.innerHTML="不符合格式要求";
+	sub.style.display="none";
 	inputB.focus();
 	}else{
 	idb.innerHTML="";
+	sub.style.display="";
 	}
 }
 inputC.onblur = function checkAge() {
 	var reg= /^(1[6-9]|[2-9][0-9])$/;
 	if(reg.test(inputC.value)==false){
 	idc.innerHTML="不符合格式要求";
+	sub.style.display="none";
 	inputC.focus();
 	}else{
 	idc.innerHTML="";
+	sub.style.display="";
 	}
 }
 inputD.onblur = function checkSex() {
-	if(inputD.value!="男"||inputD.value!="男"){
-	idd.innerHTML="不符合格式要求";
-	inputD.focus();
-	}else{
+	if(inputD.value=="男"||inputD.value=="女"){
 	idd.innerHTML="";
+	sub.style.display="";
+	}else{
+	idd.innerHTML="不符合格式要求";
+	sub.style.display="none";
+	inputD.focus();	
 	}
 }
 inputE.onblur = function isTelCode() {
 	var reg= /^((0\d{2,3}-\d{7,8})|(1[3584]\d{9}))$/;
 	if(reg.test(inputE.value)==false){
 	ide.innerHTML="不符合格式要求";
+	sub.style.display="none";
 	inputE.focus();
 	}else{
 	ide.innerHTML="";
+	sub.style.display="";
 	}
 }
 

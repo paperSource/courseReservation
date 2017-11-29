@@ -7,14 +7,15 @@ public class Users {
 	private String sex;// 性别
 	private int age;// 年龄
 	private String tellphoneNum;// 电话号码
-	private String roleFlag;// 角色：1:用户、0:管理员
-	private int usersState;
+	private int usersState;//用户状态 0管理员 1普通用户
+	private String emilName;//邮箱地址
+	private String emilCode;//邮箱验证码
 	public Users() {
 		super();
 	}
 
 	public Users(int id, String usersName, String usersPwd, String sex,
-			int age, String tellphoneNum, String roleFlag,int usersState) {
+			int age, String tellphoneNum,int usersState,String emilCode,String emilName) {
 		super();
 		this.id = id;
 		this.usersName = usersName;
@@ -22,8 +23,9 @@ public class Users {
 		this.sex = sex;
 		this.age = age;
 		this.tellphoneNum = tellphoneNum;
-		this.roleFlag = roleFlag;
 		this.usersState = usersState;
+		this.emilCode = emilCode;
+		this.emilName = emilName;
 	}
 
 	public int getId() {
@@ -73,21 +75,14 @@ public class Users {
 	public void setTellphoneNum(String tellphoneNum) {
 		this.tellphoneNum = tellphoneNum;
 	}
-
-	public String getRoleFlag() {
-		return roleFlag;
-	}
-
-	public void setRoleFlag(String roleFlag) {
-		this.roleFlag = roleFlag;
-	}
-
 	@Override
 	public String toString() {
 		return "Users [id=" + id + ", usersName=" + usersName + ", usersPwd="
 				+ usersPwd + ", sex=" + sex + ", age=" + age
-				+ ", tellphoneNum=" + tellphoneNum + ", roleFlag=" + roleFlag
-				+usersState+ "]";
+				+ ", tellphoneNum=" + tellphoneNum + ", usersState="
+				+usersState+ "]"+", emilCode="
+				+emilCode+ "]"+", emilName="
+				+emilName+ "]";
 	}
 
 	public int getUsersState() {
@@ -96,6 +91,22 @@ public class Users {
 
 	public void setUsersState(int usersState) {
 		this.usersState = usersState;
+	}
+
+	public String getEmilCode() {
+		return emilCode;
+	}
+
+	public void setEmilCode(String emilCode) {
+		this.emilCode = emilCode;
+	}
+
+	public String getEmilName() {
+		return emilName;
+	}
+
+	public void setEmilName(String emilName) {
+		this.emilName = emilName;
 	}
 
 		

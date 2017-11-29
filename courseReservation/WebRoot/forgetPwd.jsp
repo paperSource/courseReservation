@@ -38,33 +38,65 @@ font-weight:bolder;
   
   </style>
   <body onload="createCode();">
-   用户登陆<br><br>
-    <form action="userAction/userLogin.action" method="post" onSubmit="return check();" id="myform">
+   忘记密码<br><br>
+    <form action="userAction/userUpdatePwd.action" method="post" onSubmit="return check();" id="myform">
            账号<input type="text" name="id" id="inA" ><div id="ina"></div><br>
+           输入邮箱验证码：<input type="text" name="id" id="inD" ><button id="btn">点击发送验证码</button><br><br>
            密码<input type="password" name="usersPwd" id="inB" ><div id="inb"></div>            
            <br>验证码：<input type="text" id="input1" />      
            <input type="text" id="checkCode" class="code" style="width: 55px" /> <a href="#" onclick="createCode()">看不清楚</a>                 
-           <input type="submit" value="登录" id="Button1"/>
-           <input type="button" value="注册" onclick="javascript:window.location='register.jsp'"/>
+           <input type="submit" value="提交" id="Button1"/>
     </form>
-    <br>
-    <a href="forgetPwd.jsp">忘记密码</a>
   </body>
 </html>
 <script type="text/javascript">
+
 var code ; //在全局 定义验证码      
 var inA= document.getElementById("inA");
 var ina= document.getElementById("ina");
 var inB= document.getElementById("inB");
 var ina= document.getElementById("ina");
 var input1= document.getElementById("input1");
+var btn = document.getElementById("btn");
+var but = document.getElementById("Button1");
+var count = 5;
+var timer= null;
 function check(){
-if(inA.value==""||inB.value==""||input1.value==""){
+if(inA.value==""||inB.value==""||input1.value==""||inD.value==""){
  return false;
 }else{
  return validate ();
 }
+
 }
+            btn.onclick = function () {
+            $.ajax({
+			 type : "post",
+			 url : 'userAction/pastMailcode.action?id='+$('#inA').val(),
+			 async:true,
+			 contentType: "application/json;charset=utf-8",
+			 success : function(msg){
+			 alert(msg);		 
+			 }			 
+		  });
+                clearInterval(timer);
+                this.disabled = true;
+                var that = this;
+                timer = setInterval(sendTextMessage,1000);//名字timer
+                function sendTextMessage() {
+                    count--;
+                    if(count>=0){
+                        that.innerHTML = "还剩余" + count +"秒";
+                    }else{
+                        that.innerHTML = "重新发送短信";
+                        that.disabled =false;
+                        clearInterval(timer);
+                        count = 5;
+                    }
+
+                }}
+            
+
 inA.onblur = function checkname(){
 if(inA.value==""){
   inA.focus(); }else{
@@ -76,12 +108,40 @@ if(inA.value==""){
 			 async:true,
 			 contentType: "application/json;charset=utf-8",
 			 success : function(msg){
-			 $("#ina").html(msg);		 
+			 alert(msg);
+			 if(msg.length>5){
+			 inA.value="";
+			 }	 
 			 }			 
 		  });
 
 		});
   }
+}
+inB.onblur = function checkname(){
+if(inB.value=="")
+  inB.focus(); 
+}
+
+inD.onblur = function checkname(){
+if(inD.value=="")
+{inD.focus();}else{
+$.ajax({
+			 type : "post",
+			 url : 'userAction/equalEmilCode.action?emilCode='+$('#inD').val()+'&id='+$('#inA').val(),
+			 async:true,
+			 contentType: "application/json;charset=utf-8",
+			 success : function(data){
+			 alert(data);
+			 if(data.length>6)	{
+			 inD.value="";
+			 }	 
+			 }			 
+		  });
+
+
+}
+  
 }
 inB.onblur = function checkname(){
 if(inB.value=="")
