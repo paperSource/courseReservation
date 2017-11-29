@@ -47,7 +47,7 @@ public class TopicSVImpl implements ITopicSV{
 	}
 	
 	public List<Topic> queryPag(int start, int number) throws Exception {
-		Map<String, Object> map = new HashMap<>();
+		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("start", start);
 		map.put("number", number);
 		return topicDao.queryPag(map);
