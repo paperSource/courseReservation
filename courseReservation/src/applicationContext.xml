@@ -50,7 +50,7 @@
 		<!-- 指定扫描的包名 
 		如果扫描多个包，每个包中间使用半角逗号分隔
 		-->
-		<property name="basePackage" value="cn.edu.chenggong.dao"/>
+		<property name="basePackage" value="cn.edu.chenggong.dao,cn.edu.chenggong.postings.dao"/>
 		<property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
 		
 	</bean>
