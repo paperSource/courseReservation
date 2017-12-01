@@ -43,6 +43,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="findUsersInfoByUsersName"  parameterType="Users" resultType="Users">
         select * from users where usersName=#{usersName}
     </select>
+    <select id="findAllById"  parameterType="int" resultType="Users">
+        select * from users where id=#{id}
+    </select>
     <!-- 通过id删除用户 -->
     <delete id="delectUsersInfo">
       delete from Users where id=#{id}

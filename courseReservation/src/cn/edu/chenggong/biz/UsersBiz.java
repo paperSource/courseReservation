@@ -17,4 +17,5 @@ public interface UsersBiz {
 	public Users findUsersInfoByUsersName(Users users);//查找用户信息通过姓名
 	public void insertMailcode(Users users);//插入验证码(mapper.xml其实使用update更新验证)
 	public void userUpdatePwd(Users users);//修改用户密码
+	public Users findAllById(int id);
 }

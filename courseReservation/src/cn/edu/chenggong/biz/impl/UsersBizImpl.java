@@ -65,4 +65,10 @@ public class UsersBizImpl implements UsersBiz {
 	public void userUpdatePwd(Users users) {
 		userMapper.userUpdatePwd(users);
 	}
+
+	public Users findAllById(int id) {
+		return userMapper.findAllById(id);
+	}
+
+	
 }
