@@ -1,0 +1,92 @@
+*{margin: 0;padding: 0;}
+body{
+	margin: 0 auto;
+	background-color: #FFFFFF;
+	font-family:Arial,Helvetica,sans-serif; 
+	width: 1000px;
+}
+html{
+  	background-color: #DCEFFE;
+}
+/*---------------头部--------------*/
+#top{height: 150px;width: 100%;}
+
+/*---------------主题--------------*/
+#content{
+	
+}
+/*---------------帖子列表--------------*/
+#main{
+	height:auto!important;
+	min-height: 30px;
+	max-height: 580px;
+}
+.topic_title,.topic_staUsers,.topic_date{
+	font-size: 15px;
+	font-family :"宋体";
+}
+.topic_title{
+	width: 85%;
+}
+#topic_list td{
+	border-bottom: 1px dashed #E4E6EB;
+}
+#topic_list tr:hover{
+	background-color: #F7F9FC;
+}
+.t_title{
+	color: #2D64B3;
+	text-decoration: none;
+}
+.t_title:hover{
+	text-decoration: underline;
+}
+.topic_staUsers{
+	width: 5%;
+	color: #999999;
+	text-align:center;
+}
+.topic_date{
+	width: 10%;
+	text-align:center;
+	color : #f00;
+	overflow: hidden;
+	white-space: nowrap;
+	
+}
+/*---------------帖子列表--------------*/
+#posting{
+	width: 100%;
+	margin: 0;
+	background-color: #F4F4F4;
+}
+#p_title{
+	padding-top:5px;
+	margin-bottom: 10px;
+	margin-left: 20px;
+}
+#p_content{
+	margin-left: 20px;
+}
+#p_button{
+	width: 100%;
+	height: 100px;
+	margin-top: 20px;
+}
+#p_button a{
+	text-decoration: none;
+	display:block;
+	height: 25px;
+	width: 50px;
+	padding-top:5px;
+	text-align:center;
+	margin:0 auto;
+	background-color:rgb(62, 137, 250);
+	border-color:#2b71d9;
+	font-size: 12px;
+	color: #fff;
+}
+#p_span{
+	
+}
+/*---------------尾部--------------*/

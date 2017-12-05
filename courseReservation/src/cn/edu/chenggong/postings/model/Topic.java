@@ -2,6 +2,8 @@ package cn.edu.chenggong.postings.model;
 
 import java.util.Date;
 
+import cn.edu.chenggong.po.Users;
+
 public class Topic {
 	 private int id;
 	 private String title;
@@ -20,6 +22,20 @@ public class Topic {
 	 private String EXT3;
 	 private String EXT4;
 	 private String EXT5;
+	 private Users staUsers;//发帖人信息
+	 private Users endUsers;//回帖人信息
+	public Users getStaUsers() {
+		return staUsers;
+	}
+	public void setStaUsers(Users staUsers) {
+		this.staUsers = staUsers;
+	}
+	public Users getEndUsers() {
+		return endUsers;
+	}
+	public void setEndUsers(Users endUsers) {
+		this.endUsers = endUsers;
+	}
 	public int getId() {
 		return id;
 	}

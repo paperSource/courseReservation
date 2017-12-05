@@ -6,7 +6,7 @@
 <mapper namespace="cn.edu.chenggong.postings.dao.TopicDao">
 	<insert id="add" parameterType="cn.edu.chenggong.postings.model.Topic">
 		insert into Topic(title,content,TopicStarter,date,classify,browseNum,replyNum,state,endDate,endUser,upvote,EXT1,EXT2,EXT3,EXT4,EXT5)
-		values(#{title},#{content},#{TopicStarter},NOW(),#{classify},#{browseNum},#{replyNum},#{state},#{endDate},#{endUser},#{upvote},#{EXT1},#{EXT2},#{EXT3},#{EXT4},#{EXT5})
+		values(#{title},#{content},#{TopicStarter},sysdate(),#{classify},#{browseNum},#{replyNum},#{state},#{endDate},#{endUser},#{upvote},#{EXT1},#{EXT2},#{EXT3},#{EXT4},#{EXT5})
 	</insert>
 	<delete id="delete" parameterType="cn.edu.chenggong.postings.model.Topic">
 		delete from Topic where id = #{id}
@@ -17,18 +17,18 @@
 	</update>
 	<select id="queryById" parameterType="int" resultType="cn.edu.chenggong.postings.model.Topic">
 		 select id,title,content,TopicStarter,date,classify,browseNum,replyNum,state,endDate,endUser,upvote,EXT1,EXT2,EXT3,EXT4,EXT5
-		 from Topic where id=#{id}
+		 from Topic where state=1 and id=#{id}
 	</select>
 	<select id="queryByTitle" parameterType="string" resultType="cn.edu.chenggong.postings.model.Topic">
 		select id,title,content,TopicStarter,date,classify,browseNum,replyNum,state,endDate,endUser,upvote,EXT1,EXT2,EXT3,EXT4,EXT5
-		from Topic where title like '%#{title}%'
+		from Topic where state=1 and title like '%#{title}%'
 	</select>
 	<select id="queryPag" parameterType="map" resultType="cn.edu.chenggong.postings.model.Topic">
 		select id,title,content,TopicStarter,date,classify,browseNum,replyNum,state,endDate,endUser,upvote,EXT1,EXT2,EXT3,EXT4,EXT5
-		from Topic limit #{start},#{number} 
+		from Topic where state=1 order by date desc limit #{start},#{number}
 	</select>
 	<select id="queryList" resultType="cn.edu.chenggong.postings.model.Topic">
 		select id,title,content,TopicStarter,date,classify,browseNum,replyNum,state,endDate,endUser,upvote,EXT1,EXT2,EXT3,EXT4,EXT5
-		from Topic
+		from Topic where state=1
 	</select>
 </mapper>
