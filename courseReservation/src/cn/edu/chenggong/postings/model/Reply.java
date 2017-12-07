@@ -2,6 +2,8 @@ package cn.edu.chenggong.postings.model;
 
 import java.util.Date;
 
+import cn.edu.chenggong.po.Users;
+
 public class Reply {
 	 private int id;
 	 private int TopicID;
@@ -10,12 +12,13 @@ public class Reply {
 	 private String content;
 	 private int flowers;
 	 private int eggs;
-	 private String state;
+	 private int state;
 	 private String EXT1;
 	 private String EXT2;
 	 private String EXT3;
 	 private String EXT4;
 	 private String EXT5;
+	 private Users replyUser;
 	public int getId() {
 		return id;
 	}
@@ -58,10 +61,10 @@ public class Reply {
 	public void setEggs(int eggs) {
 		this.eggs = eggs;
 	}
-	public String getState() {
+	public int getState() {
 		return state;
 	}
-	public void setState(String state) {
+	public void setState(int state) {
 		this.state = state;
 	}
 	public String getEXT1() {
@@ -94,5 +97,10 @@ public class Reply {
 	public void setEXT5(String eXT5) {
 		EXT5 = eXT5;
 	}
-	 
+	public Users getReplyUser() {
+		return replyUser;
+	}
+	public void setReplyUser(Users replyUser) {
+		this.replyUser = replyUser;
+	}
 }

@@ -14,7 +14,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	<script type="text/javascript" src="<%=basePath%>js/jquery-1.9.1.min.js"></script>
   </head>
 <body>
-<table border="0" width="100%">
+<table border="0" width="100%" id="pc">
 	<tr>
 		<td>
 			<table style="line-height: 30px;" border="0" id="topic_list" width="100%" cellspacing="0"></table>
@@ -55,7 +55,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		}
 	}
 	function t_click(id){
-		
+		var url="<%=basePath%>topicAction/detail.action?id="+id;
+        parent.location.href=url;
 	} 
 </script>
 <script type="text/javascript">
@@ -85,6 +86,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						str = "<tr><td class='topic_title'><a class='t_title' href='###' onclick='t_click("+topicList[topic].id+")'>" + topicList[topic].title +"</a></td><td class='topic_staUsers'>" + topicList[topic].staUsers.usersName + "</td><td class='topic_date'>" + formatDate(new Date(topicList[topic].date)) +"</td></tr>";
 						$("#topic_list").append(str);
 					}
+					parent.document.getElementById("topic_List").height=$("#pc").height()+50;
 	  			});     
 	        }    
 		});

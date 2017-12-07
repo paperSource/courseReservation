@@ -54,7 +54,7 @@ public class TopicAction {
 				tp.setClassify("0");
 				tp.setBrowseNum(0);
 				tp.setReplyNum(0);
-				tp.setState("1");
+				tp.setState(1);
 				tp.setUpvote(0);
 				topicSVImpl.add(tp);
 			//}else{
@@ -84,11 +84,24 @@ public class TopicAction {
 		map.put("topicList", topicList);
 		return map;
 	}
-	@RequestMapping("test")
-	public void test(HttpServletRequest request,HttpServletResponse response) throws Exception{
-		PrintWriter out = response.getWriter();
-		String pageIndex = request.getParameter("page");
-		System.out.println(pageIndex);
-		out.print(pageIndex);
+	@RequestMapping("detail")
+	public ModelAndView detail(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		int id = Integer.parseInt(request.getParameter("id"));
+		ModelAndView ma = new ModelAndView();
+		Topic topic = topicSVImpl.queryById(id);
+		UsersBizImpl biz = (UsersBizImpl) SpringContextUtil.getApplicationContext().getBean("usersBizImpl");
+		topic.setStaUsers(biz.findAllById(topic.getTopicStarter()));
+		HttpSession session = request.getSession();
+		Users user = (Users) session.getAttribute("users");
+		int delPermission = 0;
+		if(user!=null){
+			if(topic.getTopicStarter() == user.getId()){
+				delPermission = 1;
+			}
+		}
+		ma.addObject("delPermission",delPermission);
+		ma.addObject("topic",topic);
+		ma.setViewName("/jsp/postings/detail.jsp");
+		return ma;
 	}
 }

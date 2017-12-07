@@ -13,7 +13,7 @@ public class Topic {
 	 private String classify;
 	 private int browseNum;
 	 private int replyNum;
-	 private String state;
+	 private int state;
 	 private Date endDate;
 	 private int endUser;
 	 private int upvote;
@@ -84,10 +84,10 @@ public class Topic {
 	public void setReplyNum(int replyNum) {
 		this.replyNum = replyNum;
 	}
-	public String getState() {
+	public int getState() {
 		return state;
 	}
-	public void setState(String state) {
+	public void setState(int state) {
 		this.state = state;
 	}
 	public Date getEndDate() {
