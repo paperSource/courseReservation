@@ -26,10 +26,10 @@ String topicId = request.getParameter("topicId");
 		str=str+"<div class='post_body'>"+replyList.content+"</div></td></tr>";
 		str=str+"<tr style='height: 15%;'><td style='background-color: #EFF4FB;'><div class='p_date'>";
 		str=str+"<span>回复时间:"+formatDate(replyList.date)+"</span>";
-		str=str+"</div><div class='p_button'><a href='###'><img src='#'/><span>送花["+replyList.flowers+"]</span></a><a href='###'><img src='#'/><span>扔蛋["+replyList.eggs+"]</span></a>";
+		str=str+"</div><div class='p_button'><a href='###' onclick='addFlowers("+replyList.id+")'><img src='#'/>送花[<span id='flowers_"+replyList.id+"'>"+replyList.flowers+"</span>]</a><a href='###' onclick='addEggs("+replyList.id+")'><img src='#'/>扔蛋[<span id='eggs_"+replyList.id+"'>"+replyList.eggs+"</span>]</a>";
 		if(user!=null){
 			if(replyList.replyID == user.id){
-				str=str+"<a href='###'><span>删除</span></a>";
+				str=str+"<a href='###' onclick='deleteReply("+replyList.id+")'><span>删除</span></a>";
 			}
 		}
 		str=str+"</div></td></tr></table></td></tr></table>";
@@ -43,6 +43,88 @@ String topicId = request.getParameter("topicId");
 		var hour=now.getHours()< 10 ? "0" + now.getHours() : now.getHours(); 
 		var minute=now.getMinutes()< 10 ? "0" + now.getMinutes() : now.getMinutes(); 
 		return year+"-"+month+"-"+date+" "+hour+":"+minute;
+	}
+</script>
+<script type="text/javascript">
+	var addFlows = [];//记录送花标记
+	var eggs = [];//丢蛋标记
+	function deleteReply(rid){
+		if (!confirm("确认要删除吗？")){
+			return false;
+		}
+		$.ajax({
+  				type:"post",
+				url:"<%=basePath%>replyAction/deleteReply.action",
+				data:{"replyId":rid},
+				dataType:"text",
+				success:function(data){
+					alert(data);
+					if(data == "删除成功"){
+						location.reload();
+					}
+					
+				},
+				error: function(XMLHttpRequest, textStatus, errorThrown) {
+					alert("系统错误！");
+            	},
+  			
+  			})
+	}
+	function addFlowers(rid){
+		var objs = eval(addFlows);
+		for(var i = 0;i<objs.length;i++){
+   			if(objs[i].replyId == rid){
+   				alert("您已经送过花了");
+   				return false;
+   			}
+  		}
+		$.ajax({
+  				type:"post",
+				url:"<%=basePath%>replyAction/addFlowers.action",
+				data:{"replyId":rid},
+				dataType:"text",
+				success:function(data){
+					$("#flowers_"+rid).html(data);
+					var row = {};
+					row.replyId= rid;
+					row.addTab = "1";
+					addFlows.push(row);
+					
+				},
+				error: function(XMLHttpRequest, textStatus, errorThrown) {
+					alert("系统错误！");
+            	},
+  			
+  			})
+  			
+	}
+	function addEggs(rid){
+		var objs = eval(eggs);
+		for(var i = 0;i<objs.length;i++){
+   			if(objs[i].replyId == rid){
+   				alert("您已经扔过蛋了");
+   				return false;
+   			}
+  		}
+		$.ajax({
+  				type:"post",
+				url:"<%=basePath%>replyAction/addEggs.action",
+				data:{"replyId":rid},
+				dataType:"text",
+				success:function(data){
+					$("#eggs_"+rid).html(data);
+					var row = {};
+					row.replyId= rid;
+					row.addTab = "1";
+					eggs.push(row);
+					
+				},
+				error: function(XMLHttpRequest, textStatus, errorThrown) {
+					alert("系统错误！");
+            	},
+  			
+  			})
+  			
 	}
 </script>
   </head>

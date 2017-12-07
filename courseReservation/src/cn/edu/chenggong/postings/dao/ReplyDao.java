@@ -52,4 +52,16 @@ public interface ReplyDao {
 	 * @throws Exception
 	 */
 	public List<Reply> queryByTopicID(Map<String, Object> map) throws Exception;
+	/**
+	 * 送花
+	 * @param id
+	 * @throws Exception
+	 */
+	public void addFlowers(int id) throws Exception;
+	/**
+	 * 丢蛋
+	 * @param id
+	 * @throws Exception
+	 */
+	public void addEggs(int id) throws Exception;
 }

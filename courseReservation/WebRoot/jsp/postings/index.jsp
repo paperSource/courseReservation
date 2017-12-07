@@ -75,9 +75,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 				},
 				error: function(XMLHttpRequest, textStatus, errorThrown) {
-					alert(XMLHttpRequest.status); 
-					alert(XMLHttpRequest.readyState); 
-					alert(textStatus);
 					alert("系统错误！");
             	},
   			

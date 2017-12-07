@@ -60,7 +60,7 @@ public class ReplyAction {
 		}
 	}
 	@RequestMapping("query")
-	public @ResponseBody Map<String, Object> test(HttpServletRequest request, HttpServletResponse response) throws Exception{
+	public @ResponseBody Map<String, Object> query(HttpServletRequest request, HttpServletResponse response) throws Exception{
 		int intPage = Integer.parseInt(request.getParameter("page"));
 		int number = Integer.parseInt(request.getParameter("num"));
 		int start = (intPage-1)*number;
@@ -78,5 +78,44 @@ public class ReplyAction {
 		map.put("user", user);
 		return map;
 	}
-	
+	@RequestMapping("deleteReply")
+	public void delete(HttpServletRequest request, HttpServletResponse response) throws Exception{
+		int id = Integer.parseInt(request.getParameter("replyId"));
+		PrintWriter out = response.getWriter();
+		String message = "删除成功";
+		try{
+			replySV.delete(id);
+		}catch(Exception e){
+			message = "删除失败，内部错误！";
+			throw new RuntimeException("删除异常");
+		}finally{
+			out.print(message);
+		}
+	}
+	@RequestMapping("addFlowers")
+	public void addFlowers(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		int id = Integer.parseInt(request.getParameter("replyId"));
+		PrintWriter out = response.getWriter();
+		try{
+			replySV.addFlowers(id);
+		}catch(Exception e){
+			throw new RuntimeException("送花异常");
+		}finally{
+			int flowsnum = replySV.queryByID(id).getFlowers();
+			out.print(flowsnum);
+		}
+	}
+	@RequestMapping("addEggs")
+	public void addEggs(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		int id = Integer.parseInt(request.getParameter("replyId"));
+		PrintWriter out = response.getWriter();
+		try{
+			replySV.addEggs(id);
+		}catch(Exception e){
+			throw new RuntimeException("丢蛋异常");
+		}finally{
+			int eggsnum = replySV.queryByID(id).getEggs();
+			out.print(eggsnum);
+		}
+	}
 }

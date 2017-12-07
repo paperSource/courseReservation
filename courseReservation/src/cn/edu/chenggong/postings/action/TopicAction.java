@@ -104,4 +104,23 @@ public class TopicAction {
 		ma.setViewName("/jsp/postings/detail.jsp");
 		return ma;
 	}
+	@RequestMapping("deleteTopic")
+	public void deleteTopic(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		int id = Integer.parseInt(request.getParameter("topicId"));
+		PrintWriter out = response.getWriter();
+		String message = "删除成功";
+		try{
+			Topic topic = topicSVImpl.queryById(id);
+			if(topic!=null){
+				topicSVImpl.delete(topic);
+			}else{
+				message = "您要删除的帖子不存在";
+			}
+		}catch(Exception e){
+			message = "删除失败，内部错误！";
+			throw new RuntimeException("删除异常");
+		}finally{
+			out.print(message);
+		}
+	}
 }

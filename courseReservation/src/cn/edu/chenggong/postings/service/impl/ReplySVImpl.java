@@ -46,5 +46,11 @@ public class ReplySVImpl implements IReplySV{
 		map.put("number", number);
 		return replyDao.queryByTopicID(map);
 	}
+	public void addFlowers(int id) throws Exception {
+		replyDao.addFlowers(id);
+	}
+	public void addEggs(int id) throws Exception {
+		replyDao.addEggs(id);
+	}
 
 }

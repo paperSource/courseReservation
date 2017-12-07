@@ -75,7 +75,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   										<img src="#"/><span>点赞[${topic.upvote }]</span>
   									</a>
   									<c:if test="${delPermission==1 }">
-  										<a href="###">
+  										<a href="###" onclick="deleteTopic(${topic.id})">
   											<span>删除</span>
   										</a>
   									</c:if>
@@ -121,9 +121,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 				},
 				error: function(XMLHttpRequest, textStatus, errorThrown) {
-					alert(XMLHttpRequest.status); 
-					alert(XMLHttpRequest.readyState); 
-					alert(textStatus);
+					alert("系统错误！");
+            	},
+  			
+  			})
+  		}
+  		function deleteTopic(tid){
+  			if (!confirm("确认要删除吗？")){
+			return false;
+			}
+			$.ajax({
+  				type:"post",
+				url:"<%=basePath%>topicAction/deleteTopic.action",
+				data:{"topicId":tid},
+				dataType:"text",
+				success:function(data){
+					alert(data);
+					if(data == "删除成功"){
+						location.href="<%=basePath%>jsp/postings/index.jsp";
+					}
+					
+				},
+				error: function(XMLHttpRequest, textStatus, errorThrown) {
 					alert("系统错误！");
             	},
   			

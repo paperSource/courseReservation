@@ -31,4 +31,10 @@
 		select id,TopicID,replyID,date,content,flowers,eggs,state,EXT1,EXT2,EXT3,EXT4,EXT5
 		from Reply where state=1 and TopicID = #{tid} order by date asc limit #{start},#{number}
 	</select>
+	<update id="addFlowers" parameterType="int">
+		UPDATE reply set flowers=flowers+1 where id = #{id}
+	</update>
+	<update id="addEggs" parameterType="int">
+		UPDATE reply set eggs=eggs+1 where id = #{id}
+	</update>
 </mapper>
