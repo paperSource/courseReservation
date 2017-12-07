@@ -71,8 +71,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   									<span>发帖时间:<fmt:formatDate type="both" value="${topic.date}"/></span>
   								</div>
   								<div class="p_button">
-  									<a href="###">
-  										<img src="#"/><span>点赞[${topic.upvote }]</span>
+  									<a href="###" onclick="addUpvote(${topic.id})">
+  										<img src="<%=basePath%>img/prasie.png"/>点赞[<span id="upvote">${topic.upvote }</span>]
   									</a>
   									<c:if test="${delPermission==1 }">
   										<a href="###" onclick="deleteTopic(${topic.id})">
@@ -102,6 +102,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </body>
   <script type="text/javascript">
   		var pagetemp = -1;
+  		var upvote = [];//点赞标记
   		function sumbit(){
   			var reply_content = $("#editor_id").val();
   			$.ajax({
@@ -148,5 +149,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   			
   			})
   		}
+  		function addUpvote(tid){
+		var objs = eval(upvote);
+		for(var i = 0;i<objs.length;i++){
+   			if(objs[i].topicId == tid){
+   				alert("您已经点过赞了");
+   				return false;
+   			}
+  		}
+		$.ajax({
+  				type:"post",
+				url:"<%=basePath%>topicAction/addUpvote.action",
+				data:{"topicId":tid},
+				dataType:"text",
+				success:function(data){
+					$("#upvote").html(data);
+					var row = {};
+					row.topicId= tid;
+					row.addTab = "1";
+					upvote.push(row);
+					
+				},
+				error: function(XMLHttpRequest, textStatus, errorThrown) {
+					alert("系统错误！");
+            	},
+  			
+  			})
+  			
+	}
   </script>
 </html>

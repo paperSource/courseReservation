@@ -52,6 +52,9 @@ public class TopicSVImpl implements ITopicSV{
 		map.put("number", number);
 		return topicDao.queryPag(map);
 	}
+	public void addUpvote(int id) throws Exception {
+		topicDao.addUpvote(id);
+	}
 	
 	
 }

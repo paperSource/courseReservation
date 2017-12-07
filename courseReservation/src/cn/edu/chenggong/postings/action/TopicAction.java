@@ -123,4 +123,17 @@ public class TopicAction {
 			out.print(message);
 		}
 	}
+	@RequestMapping("addUpvote")
+	public void addUpvote(HttpServletRequest request,HttpServletResponse response) throws Exception{
+		int id = Integer.parseInt(request.getParameter("topicId"));
+		PrintWriter out = response.getWriter();
+		try{
+			topicSVImpl.addUpvote(id);
+		}catch(Exception e){
+			throw new RuntimeException("送花异常");
+		}finally{
+			int upvotenum = topicSVImpl.queryById(id).getUpvote();
+			out.print(upvotenum);
+		}
+	}
 }

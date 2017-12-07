@@ -31,4 +31,7 @@
 		select id,title,content,TopicStarter,date,classify,browseNum,replyNum,state,endDate,endUser,upvote,EXT1,EXT2,EXT3,EXT4,EXT5
 		from Topic where state=1
 	</select>
+	<update id="addUpvote" parameterType="int">
+		UPDATE Topic set upvote=upvote+1 where id = #{id}
+	</update>
 </mapper>

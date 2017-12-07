@@ -26,7 +26,7 @@ String topicId = request.getParameter("topicId");
 		str=str+"<div class='post_body'>"+replyList.content+"</div></td></tr>";
 		str=str+"<tr style='height: 15%;'><td style='background-color: #EFF4FB;'><div class='p_date'>";
 		str=str+"<span>回复时间:"+formatDate(replyList.date)+"</span>";
-		str=str+"</div><div class='p_button'><a href='###' onclick='addFlowers("+replyList.id+")'><img src='#'/>送花[<span id='flowers_"+replyList.id+"'>"+replyList.flowers+"</span>]</a><a href='###' onclick='addEggs("+replyList.id+")'><img src='#'/>扔蛋[<span id='eggs_"+replyList.id+"'>"+replyList.eggs+"</span>]</a>";
+		str=str+"</div><div class='p_button'><a href='###' onclick='addFlowers("+replyList.id+")'><img src='<%=basePath%>img/flows.ico' class='flows'/>送花[<span id='flowers_"+replyList.id+"'>"+replyList.flowers+"</span>]</a><a href='###' onclick='addEggs("+replyList.id+")'><img src='<%=basePath%>img/eggs.ico' class='eggs'/>扔蛋[<span id='eggs_"+replyList.id+"'>"+replyList.eggs+"</span>]</a>";
 		if(user!=null){
 			if(replyList.replyID == user.id){
 				str=str+"<a href='###' onclick='deleteReply("+replyList.id+")'><span>删除</span></a>";

@@ -51,4 +51,10 @@ public interface ITopicSV {
 	 * @throws Exception
 	 */
 	public List<Topic> queryPag(int start,int number) throws Exception;
+	/**
+	 * 点赞
+	 * @param id
+	 * @throws Exception
+	 */
+	public void addUpvote(int id) throws Exception;
 }

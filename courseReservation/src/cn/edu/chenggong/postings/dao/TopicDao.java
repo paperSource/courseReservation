@@ -50,4 +50,10 @@ public interface TopicDao {
 	 * @throws Exception
 	 */
 	public List<Topic> queryPag(Map<String, Object> map) throws Exception;
+	/**
+	 * 点赞
+	 * @param id
+	 * @throws Exception
+	 */
+	public void addUpvote(int id) throws Exception;
 }
