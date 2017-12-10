@@ -60,6 +60,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </body>
   <script type="text/javascript">
   		function sumbit(){
+  		    var title = $("input[name='title']").val();
+  		    var reply_content = $("#editor_id").val();
+  		    if(title == null || title == ""){
+  		    	alert("请填写标题！");
+  		    	return false;
+  		    }
+  		    if(reply_content == null || reply_content == ""){
+  		    	alert("请填写正文内容！");
+  		    	return false;
+  		    }
   			$.ajax({
   				type:"post",
 				url:"<%=basePath%>topicAction/addTopic.action",

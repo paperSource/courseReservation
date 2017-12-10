@@ -46,20 +46,20 @@ public class TopicAction {
 		Users user = (Users) session.getAttribute("users");
 		String message = "发表成功";
 		try{
-			//if(user!=null){
+			if(user!=null){
 				Topic tp = new Topic();
 				tp.setTitle(topic_title);
 				tp.setContent(topic_content);
-				tp.setTopicStarter(59);
+				tp.setTopicStarter(user.getId());
 				tp.setClassify("0");
 				tp.setBrowseNum(0);
 				tp.setReplyNum(0);
 				tp.setState(1);
 				tp.setUpvote(0);
 				topicSVImpl.add(tp);
-			//}else{
-			//	message = "用户还未登陆，请登录!";
-			//}
+			}else{
+				message = "用户还未登陆，请登录!";
+			}
 		}catch (Exception e) {
 			message = "发表失败，系统内部错误！";
 			throw new RuntimeException("插入异常");

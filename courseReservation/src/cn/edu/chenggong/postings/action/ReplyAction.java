@@ -40,18 +40,18 @@ public class ReplyAction {
 		Users user = (Users) session.getAttribute("users");
 		String message = "回复成功";
 		try{
-			//if(user!=null){
+			if(user!=null){
 				Reply reply = new Reply();
 				reply.setTopicID(topicID);
-				reply.setReplyID(59);
+				reply.setReplyID(user.getId());
 				reply.setContent(reply_content);
 				reply.setFlowers(0);
 				reply.setEggs(0);
 				reply.setState(1);
 				replySV.add(reply);
-			//}else{
-			//	message = "请登录!";
-			//}
+			}else{
+				message = "请登录!";
+			}
 		}catch(Exception e){
 			message = "回复失败，系统内部错误！";
 			throw new RuntimeException("插入异常");

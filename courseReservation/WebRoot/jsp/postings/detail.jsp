@@ -105,6 +105,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   		var upvote = [];//点赞标记
   		function sumbit(){
   			var reply_content = $("#editor_id").val();
+  			if(reply_content==null || reply_content==""){
+  				alert("请填写回复内容！");
+  				return false;
+  			}
   			$.ajax({
   				type:"post",
 				url:"<%=basePath%>replyAction/addReply.action",
