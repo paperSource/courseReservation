@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.edu.chenggong.biz.SelectionResultsBiz;
-import cn.edu.chenggong.po.Course;
 import cn.edu.chenggong.po.SelectionResults;
 import cn.edu.chenggong.po.Users;
 

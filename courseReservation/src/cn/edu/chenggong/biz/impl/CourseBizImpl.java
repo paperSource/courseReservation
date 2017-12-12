@@ -30,6 +30,7 @@ public class CourseBizImpl implements CourseBiz {
 	 * 添加课程信息
 	 * @param course
 	 */
+	@Override
 	public void addCourse(Course course) {
 		courseMapper.addCourse(course);
 	}
@@ -38,6 +39,7 @@ public class CourseBizImpl implements CourseBiz {
 	 * 查询所有课程
 	 * @return List
 	 */
+	@Override
 	public List<Course> findCourseAllByClassify(Course course) {
 		return courseMapper.findCourseAllByClassify(course);
 	}
@@ -47,6 +49,7 @@ public class CourseBizImpl implements CourseBiz {
 	 * @param course
 	 * @return
 	 */
+	@Override
 	public int deleteCourse(Course course) {
 		return courseMapper.deleteCourse(course);
 	}
@@ -56,7 +59,8 @@ public class CourseBizImpl implements CourseBiz {
 	    * @param course
 	    * @return
 	    */
-	   public Course findCourseById(Course course){
+	   @Override
+	public Course findCourseById(Course course){
 		   return courseMapper.findCourseById(course);
 	   }
 	
@@ -64,7 +68,8 @@ public class CourseBizImpl implements CourseBiz {
 	 * 修改课程信息
 	 * @param course
 	 */
-    public int updateCourse(Course course) {
+    @Override
+	public int updateCourse(Course course) {
     	return courseMapper.updateCourse(course);
     }
     
@@ -73,7 +78,8 @@ public class CourseBizImpl implements CourseBiz {
      * @param course
      * @return
      */
-    public List<Course> findCourseByName(Course course) {
+    @Override
+	public List<Course> findCourseByName(Course course) {
     	return courseMapper.findCourseByName(course);
     }
 
@@ -82,6 +88,7 @@ public class CourseBizImpl implements CourseBiz {
      * @param course
      * @return
      */
+	@Override
 	public List<Course> insertCourse(Course course) {
 		return courseMapper.insertCourse(course);
 	}

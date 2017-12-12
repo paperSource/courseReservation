@@ -5,7 +5,8 @@ import javax.mail.*;
 /** @pdOid 03bf3c3c-573f-40f9-a826-b6fabfb9619e */
 public class MyAuthenticator extends Authenticator {
    /** @pdOid 176f00f2-65ae-4b3b-af51-13cf1c265a2f */
-   protected PasswordAuthentication getPasswordAuthentication() {  
+   @Override
+protected PasswordAuthentication getPasswordAuthentication() {  
        return new PasswordAuthentication(userName, password);  
    }
    

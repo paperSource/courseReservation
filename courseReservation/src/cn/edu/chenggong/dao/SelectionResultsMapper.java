@@ -2,7 +2,6 @@ package cn.edu.chenggong.dao;
 
 import java.util.List;
 
-import cn.edu.chenggong.po.Course;
 import cn.edu.chenggong.po.SelectionResults;
 
 

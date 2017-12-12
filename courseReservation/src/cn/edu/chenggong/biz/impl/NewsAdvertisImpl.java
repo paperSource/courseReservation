@@ -28,12 +28,14 @@ public void setNewsAdvertM(NewsAdvertisMapper newsAdvertM) {
 
 
 
+@Override
 public void addNewsAdver(NewsAdvertis newsA) {
 	newsAdvertM.addNewsAdver(newsA);
 }
 
 
 
+@Override
 public List<NewsAdvertis> findNewsAdver() {
 	return newsAdvertM.findNewsAdver();
 }

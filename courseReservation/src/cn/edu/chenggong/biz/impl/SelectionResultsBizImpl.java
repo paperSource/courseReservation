@@ -28,6 +28,7 @@ public class SelectionResultsBizImpl implements SelectionResultsBiz {
 	 * 添加选课信息
 	 * @param selectionResult
 	 */
+	@Override
 	public void addSelectionResults(SelectionResults selectionResults) {
 		selectionResultsMapper.addSelectionResults(selectionResults);
 	}
@@ -37,6 +38,7 @@ public class SelectionResultsBizImpl implements SelectionResultsBiz {
 	 * @param selectionResults
 	 * @return
 	 */
+	@Override
 	public List<SelectionResults> findResultbyId(SelectionResults selectionResults) {
 		return selectionResultsMapper.findResultbyId(selectionResults);
 	}
@@ -46,6 +48,7 @@ public class SelectionResultsBizImpl implements SelectionResultsBiz {
 	 * @param course
 	 * @return
 	 */
+	@Override
 	public int deleteResultbyId(SelectionResults selectionResults) {
 		return selectionResultsMapper.deleteResultbyId(selectionResults);
 	}
@@ -55,6 +58,7 @@ public class SelectionResultsBizImpl implements SelectionResultsBiz {
 	 * @param selectionResults
 	 * @return
 	 */
+	@Override
 	public int getSelectCountByUsersId(SelectionResults selectionResults) {
 		return selectionResultsMapper.getSelectCountByUsersId(selectionResults);
 	}
@@ -64,6 +68,7 @@ public class SelectionResultsBizImpl implements SelectionResultsBiz {
 	 * @param selectionResults
 	 * @return
 	 */
+	@Override
 	public List<SelectionResults> getResultByCourseId(SelectionResults selectionResults) {
 		return selectionResultsMapper.getResultByCourseId(selectionResults);
 	}
