@@ -1,4 +1,4 @@
-package cn.edu.chenggong.postings.action;
+package cn.edu.chenggong.action;
 
 import java.io.PrintWriter;
 import java.util.LinkedHashMap;
@@ -14,10 +14,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import cn.edu.chenggong.biz.IReplySV;
 import cn.edu.chenggong.biz.impl.UsersBizImpl;
+import cn.edu.chenggong.po.Reply;
 import cn.edu.chenggong.po.Users;
-import cn.edu.chenggong.postings.model.Reply;
-import cn.edu.chenggong.postings.service.Interface.IReplySV;
 import cn.edu.chenggong.util.SpringContextUtil;
 
 @Controller

@@ -12,13 +12,19 @@ public interface CourseMapper {
 	public void addCourse(Course course);
 	
 	/**
+	 * 查询课程是否已存在
+	 * @param course
+	 */
+	public List<Course> insertCourse(Course course);
+	
+	/**
 	 * 查询所有课程
 	 * @return List
 	 */
-	public List<Course> findCourseAll();
+	public List<Course> findCourseAllByClassify(Course course);
 	
 	/**
-     * 删除用户信息
+     * 删除课程信息
      * @param course
      * @return
      */

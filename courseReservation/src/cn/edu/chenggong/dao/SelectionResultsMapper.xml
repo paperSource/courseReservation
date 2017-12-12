@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- namespace命名空间，作用就是对sql进行分类化管理，理解sql隔离 
+注意：使用mapper代理方法开发，namespace有特殊重要的作用
+-->
+
+<mapper namespace="cn.edu.chenggong.dao.SelectionResultsMapper">
+	<!-- 添加用户选课结果 -->
+    <insert id="addSelectionResults" parameterType="SelectionResults">
+    	insert into selectionResults(usersId,usersName,courseId,courseTitle,classHour,teacherName,classify,gmt_creat) 
+    			values (#{usersId},#{usersName},#{courseId},#{courseTitle},#{classHour},#{teacherName},#{classify},NOW());
+    </insert>
+    
+    <!-- 通过用户Id查看所选课程 -->  
+   	<select id="findResultbyId" parameterType="SelectionResults" resultType="SelectionResults">
+         select * from selectionresults where usersId=#{usersId}
+    </select>
+    
+    <!-- 通过Id删除课程 -->
+    <delete id="deleteResultbyId" parameterType="SelectionResults">
+      delete from selectionresults where id=#{id}
+    </delete>
+    
+    <!-- 通过用户Id查看所选课程数量 -->  
+   	<select id="getSelectCountByUsersId" parameterType="SelectionResults" resultType="Integer">
+         select count(*) from selectionresults where usersId=#{usersId}
+    </select>
+   
+    <!-- 查看用户是否已选择此课程 --> 
+    <select id="getResultByCourseId" parameterType="SelectionResults" resultType="SelectionResults">
+         select * from selectionresults where courseId=#{courseId}
+    </select>
+</mapper>
+
+

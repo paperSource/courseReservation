@@ -22,6 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
   </head>
   <body>
+  <a href="jsp/postings/index.jsp">论坛</a>
       我是普通用户${stId.usersName}<br><br><br><br>
       用户信息 <c:forEach items="${usersList}" var="usersL">
         <c:if test="${usersL.id==stId.id}">

@@ -3,31 +3,31 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
-<mapper namespace="cn.edu.chenggong.postings.dao.TopicDao">
-	<insert id="add" parameterType="cn.edu.chenggong.postings.model.Topic">
+<mapper namespace="cn.edu.chenggong.dao.TopicDao">
+	<insert id="add" parameterType="Topic">
 		insert into Topic(title,content,TopicStarter,date,classify,browseNum,replyNum,state,endDate,endUser,upvote,EXT1,EXT2,EXT3,EXT4,EXT5)
 		values(#{title},#{content},#{TopicStarter},sysdate(),#{classify},#{browseNum},#{replyNum},#{state},#{endDate},#{endUser},#{upvote},#{EXT1},#{EXT2},#{EXT3},#{EXT4},#{EXT5})
 	</insert>
-	<delete id="delete" parameterType="cn.edu.chenggong.postings.model.Topic">
+	<delete id="delete" parameterType="Topic">
 		delete from Topic where id = #{id}
 	</delete>
-	<update id="update" parameterType="cn.edu.chenggong.postings.model.Topic">
+	<update id="update" parameterType="Topic">
 		update Topic set title=#{title},content=#{content},TopicStarter=#{TopicStarter},date=#{date},classify=#{classify},browseNum=#{browseNum},replyNum=#{replyNum},state=#{state},endDate=#{endDate},endUser=#{endUser},upvote=#{upvote},EXT1=#{EXT1},EXT2=#{EXT2},EXT3=#{EXT3},EXT4=#{EXT4},EXT5=#{EXT5}
 		where id=#{id}
 	</update>
-	<select id="queryById" parameterType="int" resultType="cn.edu.chenggong.postings.model.Topic">
+	<select id="queryById" parameterType="int" resultType="Topic">
 		 select id,title,content,TopicStarter,date,classify,browseNum,replyNum,state,endDate,endUser,upvote,EXT1,EXT2,EXT3,EXT4,EXT5
 		 from Topic where state=1 and id=#{id}
 	</select>
-	<select id="queryByTitle" parameterType="string" resultType="cn.edu.chenggong.postings.model.Topic">
+	<select id="queryByTitle" parameterType="string" resultType="Topic">
 		select id,title,content,TopicStarter,date,classify,browseNum,replyNum,state,endDate,endUser,upvote,EXT1,EXT2,EXT3,EXT4,EXT5
 		from Topic where state=1 and title like '%#{title}%'
 	</select>
-	<select id="queryPag" parameterType="map" resultType="cn.edu.chenggong.postings.model.Topic">
+	<select id="queryPag" parameterType="map" resultType="Topic">
 		select id,title,content,TopicStarter,date,classify,browseNum,replyNum,state,endDate,endUser,upvote,EXT1,EXT2,EXT3,EXT4,EXT5
 		from Topic where state=1 order by date desc limit #{start},#{number}
 	</select>
-	<select id="queryList" resultType="cn.edu.chenggong.postings.model.Topic">
+	<select id="queryList" resultType="Topic">
 		select id,title,content,TopicStarter,date,classify,browseNum,replyNum,state,endDate,endUser,upvote,EXT1,EXT2,EXT3,EXT4,EXT5
 		from Topic where state=1
 	</select>

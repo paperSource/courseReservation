@@ -1,11 +1,12 @@
-package cn.edu.chenggong.postings.service.Interface;
+package cn.edu.chenggong.dao;
 
 import java.util.List;
 import java.util.Map;
 
-import cn.edu.chenggong.postings.model.Reply;
+import cn.edu.chenggong.po.Reply;
 
-public interface IReplySV {
+
+public interface ReplyDao {
 	/**
 	 * 添加一条回复
 	 * @param reply
@@ -51,7 +52,7 @@ public interface IReplySV {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<Reply> queryByTopicID(int tid, int start,int number) throws Exception;
+	public List<Reply> queryByTopicID(Map<String, Object> map) throws Exception;
 	/**
 	 * 送花
 	 * @param id

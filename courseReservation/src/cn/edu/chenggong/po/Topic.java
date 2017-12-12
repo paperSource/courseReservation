@@ -1,4 +1,4 @@
-package cn.edu.chenggong.postings.model;
+package cn.edu.chenggong.po;
 
 import java.util.Date;
 

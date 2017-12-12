@@ -1,12 +1,13 @@
-package cn.edu.chenggong.postings.service.Interface;
+package cn.edu.chenggong.dao;
 
 import java.util.List;
+import java.util.Map;
 
-import cn.edu.chenggong.postings.model.Topic;
+import cn.edu.chenggong.po.Topic;
 
-public interface ITopicSV {
+public interface TopicDao {
 	/**
-	 * 新增一条帖子
+	 * 保存一条帖子信息
 	 * @param topic
 	 * @throws Exception
 	 */
@@ -45,12 +46,11 @@ public interface ITopicSV {
 	public List<Topic> queryList() throws Exception;
 	/**
 	 * 分页查询
-	 * @param start 开始
-	 * @param number 记录数
+	 * @param map 分页信息
 	 * @return
 	 * @throws Exception
 	 */
-	public List<Topic> queryPag(int start,int number) throws Exception;
+	public List<Topic> queryPag(Map<String, Object> map) throws Exception;
 	/**
 	 * 点赞
 	 * @param id

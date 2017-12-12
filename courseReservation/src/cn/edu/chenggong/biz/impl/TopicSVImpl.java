@@ -1,4 +1,4 @@
-package cn.edu.chenggong.postings.service.impl;
+package cn.edu.chenggong.biz.impl;
 
 import java.util.HashMap;
 import java.util.List;
@@ -8,9 +8,9 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import cn.edu.chenggong.postings.dao.TopicDao;
-import cn.edu.chenggong.postings.model.Topic;
-import cn.edu.chenggong.postings.service.Interface.ITopicSV;
+import cn.edu.chenggong.biz.ITopicSV;
+import cn.edu.chenggong.dao.TopicDao;
+import cn.edu.chenggong.po.Topic;
 
 @Service
 public class TopicSVImpl implements ITopicSV{

@@ -10,11 +10,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="cn.edu.chenggong.dao.CourseMapper">
 	<!-- 添加课程-->
     <insert id="addCourse" parameterType="Course">
-    	insert into course(courseTitle,classHour,teacherName,classify,classifyNo,gmt_creat) values (#{courseTitle},#{classHour},#{teacherName},#{classify},#{classifyNo},NOW());
+    	insert into course(courseTitle,imagePath,courseIntroduction,classHour,teacherName,teacherIntroduction,classify,gmt_creat) 
+    			values (#{courseTitle},#{imagePath},#{courseIntroduction},#{classHour},#{teacherName},#{teacherIntroduction},#{classify},NOW());
     </insert>
    	<!-- 查询所有课程 -->  
-   	<select id="findCourseAll" resultType="Course">
-         select * from course 
+   	<select id="findCourseAllByClassify" parameterType="Course" resultType="Course">
+         select * from course where classify=#{classify}
+         <choose>
+        	<when test="classHour !=null and classHour != ''">
+            	and CAST(id AS CHAR(12)) not in (${classHour});
+        	</when>
+    	</choose>
     </select>
     <!-- 通过Id删除课程 -->
     <delete id="deleteCourse" parameterType="Course">
@@ -26,11 +32,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
     <!-- 通过ID修改课程 -->
     <update id="updateCourse" parameterType="Course">
-       update  course set courseTitle=#{courseTitle},classHour=#{classHour},teacherName=#{teacherName},classify=#{classify},classifyNo=#{classifyNo} where id=#{id}
+       update  course set courseTitle=#{courseTitle},courseIntroduction=#{courseIntroduction},classHour=#{classHour},teacherName=#{teacherName},teacherIntroduction=#{teacherIntroduction},classify=#{classify},gmt_modifed=NOW() where id=#{id}
     </update>
     <!-- 通过课程名查询课程 -->
     <select id="findCourseByName" parameterType="Course" resultType="Course">
-       select * from course where courseTitle like '%${courseTitle}%'
+      select * from course where courseTitle like '%${courseTitle}%'
+    </select>
+    <!-- 查询课程是否存在   -->
+    <select id="insertCourse" parameterType="Course" resultType="Course">
+      select * from course where courseTitle = #{courseTitle}
     </select>
 </mapper>
 

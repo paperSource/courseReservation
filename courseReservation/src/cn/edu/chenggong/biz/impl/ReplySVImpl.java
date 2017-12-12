@@ -1,4 +1,4 @@
-package cn.edu.chenggong.postings.service.impl;
+package cn.edu.chenggong.biz.impl;
 
 import java.util.HashMap;
 import java.util.List;
@@ -8,9 +8,9 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import cn.edu.chenggong.postings.dao.ReplyDao;
-import cn.edu.chenggong.postings.model.Reply;
-import cn.edu.chenggong.postings.service.Interface.IReplySV;
+import cn.edu.chenggong.biz.IReplySV;
+import cn.edu.chenggong.dao.ReplyDao;
+import cn.edu.chenggong.po.Reply;
 @Service
 public class ReplySVImpl implements IReplySV{
 	@Resource

@@ -38,9 +38,8 @@ public class CourseBizImpl implements CourseBiz {
 	 * 查询所有课程
 	 * @return List
 	 */
-	public List<Course> findCourseAll() {
-		return courseMapper.findCourseAll();
-		
+	public List<Course> findCourseAllByClassify(Course course) {
+		return courseMapper.findCourseAllByClassify(course);
 	}
 
 	/**
@@ -77,4 +76,15 @@ public class CourseBizImpl implements CourseBiz {
     public List<Course> findCourseByName(Course course) {
     	return courseMapper.findCourseByName(course);
     }
+
+    /**
+     * 通过课程名 查询数据
+     * @param course
+     * @return
+     */
+	public List<Course> insertCourse(Course course) {
+		return courseMapper.insertCourse(course);
+	}
+
+	
 }

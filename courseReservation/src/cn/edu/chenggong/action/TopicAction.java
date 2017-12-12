@@ -1,8 +1,6 @@
-package cn.edu.chenggong.postings.action;
+package cn.edu.chenggong.action;
 
 import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,18 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.ServletRequestDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import cn.edu.chenggong.biz.ITopicSV;
 import cn.edu.chenggong.biz.impl.UsersBizImpl;
+import cn.edu.chenggong.po.Topic;
 import cn.edu.chenggong.po.Users;
-import cn.edu.chenggong.postings.model.Topic;
-import cn.edu.chenggong.postings.service.Interface.ITopicSV;
 import cn.edu.chenggong.util.SpringContextUtil;
 
 @Controller
