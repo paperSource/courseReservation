@@ -105,18 +105,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   	function verify(){
   		$.ajax({
   			type:"post",
-  			url:"/courseReservation/courseAction/findCourseAll.action",
+  			url:"/courseReservation/selectionResultsAction/getDataCount.action",
   			dateType:"json",
   			data:{pageSize:pageSize,pageNo:curr,genre:genre},
   			async:false,
   			success : function(data){
-  				var count = data.count;
-  				if(count>3){
-  					alert("已选过3门课程，不能再次选择");
+  				var userName = data.userName;
+  				if(userName=="" || userName==null || userName==undefined){
+  					alert("亲，登录后才能选课！");
   					return false;
   				}else{
-  					return true;
+  					var count = data.count;
+  					if(count>=3){
+  	  					alert("已选过3门课程，不能再次选择");
+  	  					return false;
+  	  				}else{
+  	  					return true;
+  	  				}
   				}
+  				
   			},
   			error : function(data) {
   				content='<td>暂无数据</td>';

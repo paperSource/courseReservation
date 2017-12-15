@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import cn.edu.chenggong.biz.SelectionResultsBiz;
+import cn.edu.chenggong.po.Course;
 import cn.edu.chenggong.po.SelectionResults;
 import cn.edu.chenggong.po.Users;
 
@@ -56,16 +57,10 @@ public class SelectionResultsAction {
 					selectionResults.setTeacherName(request.getParameter("teacherName"));
 					selectionResults.setClassify(request.getParameter("classify"));
 					selectionResultsBiz.addSelectionResults(selectionResults);
-					return "/pages/selectCourse/selectCourse.jsp";
-					
-				}else {
-					return "/pages/error/error.jsp";
 				}
-			}else {
-				return "/pages/selectCourse/personalResult.jsp";
 			}
 		}
-		return "/pages/error/error.jsp";
+		return "/pages/selectCourse/selectCourse.jsp";
 	}
 	
 	/**
@@ -106,6 +101,8 @@ public class SelectionResultsAction {
 		  return "/pages/selectCourse/personalResult.jsp";
 	 }
 	
+	 @RequestMapping("/getDataCount")
+	 @ResponseBody
 	 public Object getDataCount(HttpServletRequest request, SelectionResults selectionResults){
 		 HttpSession session = request.getSession(); 
 			Users users = (Users) session.getAttribute("stId");
@@ -122,6 +119,7 @@ public class SelectionResultsAction {
 		 } else {
 			 result.put("result", "success");
 			 result.put("count", count);
+			 result.put("userName", users.getUsersName());
 		 }
 		 return result;
 	 }

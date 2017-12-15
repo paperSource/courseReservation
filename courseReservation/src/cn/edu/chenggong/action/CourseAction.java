@@ -160,7 +160,7 @@ public class CourseAction {
 	 @RequestMapping("/updateCourse")
 	 public String updateCourse(Course course){
 		 courseBiz.updateCourse(course);
-		 return "findCourseAll.action";
+		 return "/pages/course/shouyeCourse.jsp";
 	 }
 	 
 	 /**
